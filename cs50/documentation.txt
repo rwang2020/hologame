@@ -1,0 +1,72 @@
+[Project Name] HoloShoot
+[Developement Team Members] Hamish Nicholson, Philippe Noel, Raymond Wang
+
+[Project Description] In this immersive augmented reality target shooting game, 
+the user is placed in an environment with targets circulating around him/her. 
+The objective is to accumulate the most number of points by shooting targets continuously.
+
+
+[System Requirements & Development Prerequisites]
+-Windows 10 Machine (64-Bit) using an Edition that supports Hyper-V
+-Visual Studio 2015 Update 3
+-Unity 5.5 for HoloLens
+-HoloLens Emulator* OR HoloLens Development Unit
+
+*Hololens Emulator is memory intensive and requires hardware-assisted virtualization
+
+[Installation Procedure]
+1) Install Development Prerequisites by following https://developer.microsoft.com/en-us/windows/holographic/install_the_tools
+2) Configure Unity and Setup a Development Account
+3) Compile the Unity Project:
+-- a) Open Unity and go to the top toolbar: File > Open Project
+-- b) Browse to the current project folder (should be titled 'cs50') and open project in Unity
+-- c) Select "1" in Assets to load the main scene.
+-- d) Select File > Build Settings. Here, ensure:
+----- "1" is checked under "Scenes In Build"
+----- Under Platform, Select Windows Store, and click Switch Platform
+----- Under SDK, select Universal 10
+----- Under UWP Build Type, select D3D (We are Using DirectX)
+----- Check the Box "Using C# Projects"
+----- Build the project by clicking "Build", and then selecting a location to compile to.
+4) Prepare to Deploy the Unity Project:
+-- a) Go to the location of the folder that was compiled to in step 3.
+-- b) Double click on cs50.sln to load the VisualStudio solution that Unity Generated.
+-- c) In visual studio, under the Solution Explorer Sidebar, ensure that "cs50 (Universal Windows)" is highlighted.
+-- d) At the top toolbar, change the Debug dropdown to "Release" and select "x86" in the adjacent dropdown.
+----- [Option 1]: To deploy to the emulator, select "Hololens Emulator 10.0.14393.0" using the dropdown arrow. Do not click the play button.
+----- [Option 2]: To deploy to the Hololens device, select "Device" using the dropdown arrow. Connect the Hololens via USB and follow the appropriate pairing directions if necessary.
+5) Deploy the Unity Project:
+-- a) Go to the menu toolbar, and select Debug > Start without Debugging (Ctrl-F5).
+-- b) The Emulator will boot up [or] the solution will be deployed to the Hololens.
+[Note: Emulator] The emulator may take a few moments to boot up. Afterwards, the HoloShoot program should run automatically.
+-- There may be a pause on the menu screen when the app is still loading. This is normal. Be patient.
+-- Head movement in the emulator is simulated with the left-mouseclick action while moving the mouse around.
+-- Air Tap movement in the emulator is simulated with the right-mouseclick action.
+[Note: Deploying to Hololens Development Unit]
+--Known Deployment Bug in the Hololens SDK: When deploying to the hololens, debug may need to be run twice, depending on your system setup. 
+A glitch in the development environment setup may cause the first deployment attempt to fail on some computers. 
+This can be overcome by attempting the build again, which should result in a success.
+
+[Program Execution Procedure - Accessing the Game]
+1) The game can be accessed from the start menu on the hololens, which can be brought up by the bloom gesture (hold any hand out in front of hololens and re-enact the motion of a lotus blooming). 
+2) The hololens UI relies on both the gaze input and virtual tap input to select menu items. Move your head around to center your “gaze” (indicated by the red dot) onto the plus sign. 
+3) From here, select the game application, titled “cs50”. The game should show the “Made with Unity” splash screen, and automatically proceed to load the virtual environment.
+
+
+[In-Game Features]
+{User Controls}
+-Head Movement: Move your head around to see and track the moving targets. The program works with the Hologram's IMU to present a consistent 3D space.
+-Shooting Projectile: Air Tap to shoot a projectile. In real life, this is done through holding a hand out in front of the hololens, 
+making a c-shape with the index finger and thumb in the plane parallel to the camera, and tapping the index finger and thumb together.
+
+{User Heads Up Display (HUD) UI & Game Immersion Features}
+-Score Display: A Score is displayed in the top-left corner. This is incremented every time one hits a target.
+-Timer: A Timer is displayed in the top-right corner. The timer keeps track of the time elapsed since the user first opened the game.
+-Interactive Sound: Background music plays during gameplay to create a soothing atmosphere relieving any user tensions from shooting projectiles.
+
+[A Note On Game Objective] In this flexible and open ended game, we wanted to make it easy for end users to adopt their own game rules. By having no set score maximum or timer maximum, the end user can choose to play with friends with rules such as:
+-Aim to achieve the highest score within a given time frame.
+-Aim to achieve a fixed score target within the least amount of time.
+-Or any other variant of the above game rules. Only the user's imagination is the limit!
+
+

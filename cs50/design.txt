@@ -1,0 +1,24 @@
+In our project we used a beta version of Unity with support for the Microsoft Hololens. We used c# to write our scripts and used 
+Mircosofts HoloToolkit-Unity(https://github.com/Microsoft/HoloToolkit-Unity) which provides some wrappers for the Hololens Api. 
+We also used git-hub to keep track of our commits (https://github.com/Shamazo/holo-game).
+
+In our object we have several important objects and scripts: 
+"Targetspawner" has a script attached to it called TargetManager that creates targets at random internals by initializing a prefab target object.
+ Additionally in TargetManeger there is a function called OnReset, we were going to use this to reset the environment 
+
+These targets have a script called TargetMove attached to them so that they orbit around the user. Additionally, these targets have a 
+rigid body component and a script to detect collisions. In this script, we find our score display and target spawner objects so we can
+ send a message to each of them to call functions in them which willupdate the variables for score and number of live targets. Also in 
+ this script we destroy the target and the projectile. We tried to add sound but we couldn'tget it working properly in time. 
+
+Gesturemanager is a empty object with a script called Gestures Input attached to it. This script is a modified version of a script
+ supplied by Microsoft to detect various forms of input. We use it so that whenever the user "airtaps" it sends the message "OnSelect"
+ to Projectile Prefab. This calls the function Onselect in projectile script. This script launches a projectile infront of the user by 
+ initialising a projectile prefab and giving it a velocity.
+
+On the main camera, we have a canvas with two objects, ScoreIndicator and TimeIndicator. These display a hud with the score and time 
+controlled by ScoreManeger and TimeManager scripts. In here you can find the functions that run when called by the messages sent by the collision script.
+
+Looking at the TargetPrefab you will see a range of components on it. As mentioned before it has the TargetMove script and Collision 
+Detection but also important to note is that Sphere collider with Is Trigger set to true. This is important as we are using the OnTriggerEnter
+ function in our collision script and this does not work if IsTrigger is set to false. Likewise for the projectile prefab.
